@@ -10,6 +10,6 @@ const enhancers = compose(
 )
 const routingMiddleware = routerMiddleware(browserHistory);
 
-export const store = createStore(rootReducer, compose(enhancers, applyMiddleware(thunk, routingMiddleware)));
+export const store = createStore(rootReducer, compose( applyMiddleware(thunk, routingMiddleware), enhancers));
 
 export const history = syncHistoryWithStore(browserHistory, store);
