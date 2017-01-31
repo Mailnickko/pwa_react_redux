@@ -24,7 +24,9 @@ module.exports = {
   },
   plugins: [
   new CopyWebpackPlugin([
-      { from: 'service-worker.js' }
+      { from: 'service-worker.js' },
+      { from: 'manifest.json' },
+      { from: 'src/images' }
     ]),
   // optimizes order of minification
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -56,7 +58,8 @@ module.exports = {
       {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
       {test: /\.(woff|woff2)$/, loader: 'url?prefix=font/&limit=5000'},
       {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},
-      {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml'}
+      {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml'},
+      {test: /\.(png|jpg|jpeg|gif|woff)$/, loader: 'url-loader?limit=8192'},
     ]
   }
 }
